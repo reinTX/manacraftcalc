@@ -9,6 +9,8 @@
             background-image: url('background.jpg'); /* Background image */
             background-size: cover;
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
         }
 
         .top-left {
@@ -45,23 +47,72 @@
         input[type="submit"]:hover {
             background-color: #45a049;
         }
+
+        .results {
+            margin-top: 20px;
+            text-align: left;
+            font-size: 1.2em;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Top-left GIF or Wiki -->
-    <img src="wiki.gif" class="top-left" alt="Wiki GIF">
+    <!-- Top-left GIF -->
+    <a href="https://example.com/wiki" target="_blank">
+        <img src="wiki.gif" class="top-left" alt="Wiki GIF">
+    </a>
 
     <!-- Calculator Form -->
     <div class="calculator">
         <h1>Crafting Calculator</h1>
-        <form action="https://formspree.io/f/xkgwanna" method="POST">
+        <form id="calculator-form">
             <label for="num_items">Enter number of items to craft:</label><br>
             <input type="number" id="num_items" name="num_items" required><br>
             <input type="submit" value="Calculate">
         </form>
-        <p>Please note: Form submission will be handled by Formspree.</p>
+        <div class="results" id="results"></div>
     </div>
+
+    <script>
+        document.getElementById('calculator-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Get the number of items from the input
+            const numItems = parseInt(document.getElementById('num_items').value);
+            
+            // Define materials per item
+            const materialsPerItem = {
+                Titanium: 18,
+                Cotton: 16,
+                Hemp: 16,
+                Silk: 24,
+                Carbon: 8,
+                PulsingShard: 12,
+                PulsingEmber: 12,
+                PulsingSoul: 2
+            };
+
+            // Calculate total materials needed
+            const totalMaterials = {};
+            for (const material in materialsPerItem) {
+                totalMaterials[material] = materialsPerItem[material] * numItems;
+            }
+
+            // Calculate total mana
+            const manaPer9Crafts = 200;
+            const totalMana = Math.floor(numItems / 9) * manaPer9Crafts;
+
+            // Prepare result string
+            let resultHtml = '<h2>Materials Needed:</h2><ul>';
+            for (const material in totalMaterials) {
+                resultHtml += `<li>${material}: ${totalMaterials[material]}</li>`;
+            }
+            resultHtml += `</ul><h2>Total Mana:</h2><p>${totalMana}</p>`;
+
+            // Display results
+            document.getElementById('results').innerHTML = resultHtml;
+        });
+    </script>
 
 </body>
 </html>
