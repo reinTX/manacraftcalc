@@ -102,9 +102,12 @@
         .pulsing-images {
             display: flex;
             justify-content: center;
+            margin-top: 20px;
         }
 
         .pulsing-images img {
+            width: 90px;
+            height: 90px;
             margin-left: 20px;
         }
     </style>
@@ -125,6 +128,13 @@
             <input type="submit" value="Calculate">
         </form>
         <div class="results" id="results"></div>
+
+        <!-- Centered Pulsing Images -->
+        <div class="pulsing-images">
+            <img src="https://assets.runiverse.wiki/images/items/65d75e4b0da2729615db078f.webp" alt="Pulsing Shard">
+            <img src="https://assets.runiverse.wiki/images/items/65d75e970da2729615db07a1.webp" alt="Pulsing Ember">
+            <img src="https://assets.runiverse.wiki/images/items/65d75ee60da2729615db07cd.webp" alt="Pulsing Soul">
+        </div>
     </div>
 
     <script>
@@ -203,13 +213,7 @@
                         </a>
                     </div>`;
             }
-            // Center pulsing images
-            resultHtml += `
-                <div class="pulsing-images">
-                    <img src="https://assets.runiverse.wiki/images/items/65d75e4b0da2729615db078f.webp" alt="Pulsing Shard">
-                    <img src="https://assets.runiverse.wiki/images/items/65d75e970da2729615db07a1.webp" alt="Pulsing Ember">
-                    <img src="https://assets.runiverse.wiki/images/items/65d75ee60da2729615db07cd.webp" alt="Pulsing Soul">
-                </div>`;
+            resultHtml += '</div>';
             resultHtml += '<h2>Total Mana:</h2><p>' + totalMana + '</p>';
 
             // Display results
