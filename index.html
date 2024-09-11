@@ -68,10 +68,23 @@
             font-size: 1.2em;
         }
 
-        .material-images img {
-            width: 50px;
-            height: auto;
+        .material-images {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .material-images div {
+            display: flex;
+            align-items: center;
             margin: 5px;
+        }
+
+        .material-images img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
         }
     </style>
 </head>
