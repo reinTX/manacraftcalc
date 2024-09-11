@@ -99,13 +99,13 @@
             text-decoration: underline;
         }
 
-        .bottom-image {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px; /* Adjust as needed */
-            height: auto;
+        .pulsing-images {
+            display: flex;
+            justify-content: center;
+        }
+
+        .pulsing-images img {
+            margin-left: 20px;
         }
     </style>
 </head>
@@ -125,9 +125,6 @@
             <input type="submit" value="Calculate">
         </form>
         <div class="results" id="results"></div>
-
-        <!-- Bottom Center Image -->
-        <img src="https://assets.runiverse.wiki/images/items/65d8d8870da2729615db3b35.webp" class="bottom-image" alt="Crafting Image">
     </div>
 
     <script>
@@ -206,13 +203,12 @@
                         </a>
                     </div>`;
             }
-            // Ensure the last image is displayed only twice
+            // Center pulsing images
             resultHtml += `
-                <div>
-                    <img src="https://assets.runiverse.wiki/images/items/65d8d8870da2729615db3b35.webp" alt="Crafting Image">
-                </div>
-                <div>
-                    <img src="https://assets.runiverse.wiki/images/items/65d8d8870da2729615db3b35.webp" alt="Crafting Image">
+                <div class="pulsing-images">
+                    <img src="https://assets.runiverse.wiki/images/items/65d75e4b0da2729615db078f.webp" alt="Pulsing Shard">
+                    <img src="https://assets.runiverse.wiki/images/items/65d75e970da2729615db07a1.webp" alt="Pulsing Ember">
+                    <img src="https://assets.runiverse.wiki/images/items/65d75ee60da2729615db07cd.webp" alt="Pulsing Soul">
                 </div>`;
             resultHtml += '<h2>Total Mana:</h2><p>' + totalMana + '</p>';
 
