@@ -5,12 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crafting Materials Calculator</title>
     <style>
+        /* Importing Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Raleway:wght@400;700&display=swap');
+
         body {
             background-image: url('https://pub-041d91f5dd114bb3aa1fcc5bffd55c00.r2.dev/Forgotten%20Runiverse%20Wallpaper%203-1724631536379.jpeg'); /* Background image */
             background-size: cover;
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
         }
 
         .top-left {
@@ -22,12 +30,18 @@
         }
 
         .calculator {
-            margin: 100px auto;
             padding: 20px;
             background-color: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
             width: 400px;
             text-align: center;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        h1 {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+            margin-bottom: 20px;
         }
 
         input[type="number"] {
@@ -52,6 +66,12 @@
             margin-top: 20px;
             text-align: left;
             font-size: 1.2em;
+        }
+
+        .material-images img {
+            width: 50px;
+            height: auto;
+            margin: 5px;
         }
     </style>
 </head>
@@ -80,22 +100,49 @@
             // Get the number of items from the input
             const numItems = parseInt(document.getElementById('num_items').value);
             
-            // Define materials per item
-            const materialsPerItem = {
-                Titanium: 18,
-                Cotton: 16,
-                Hemp: 16,
-                Silk: 24,
-                Carbon: 8,
-                PulsingShard: 12,
-                PulsingEmber: 12,
-                PulsingSoul: 2
+            // Define materials per item and images
+            const materials = {
+                Titanium: {
+                    quantity: 18,
+                    image: 'https://assets.runiverse.wiki/images/items/634f06eb808f6bf4626a3518.webp'
+                },
+                Cotton: {
+                    quantity: 16,
+                    image: 'https://assets.runiverse.wiki/images/items/634f3562808f6bf4626a3738.webp'
+                },
+                Hemp: {
+                    quantity: 16,
+                    image: 'https://assets.runiverse.wiki/images/items/634f2a9e808f6bf4626a3653.web'
+                },
+                Silk: {
+                    quantity: 24,
+                    image: 'https://assets.runiverse.wiki/images/items/634f3597808f6bf4626a374a.webp'
+                },
+                Carbon: {
+                    quantity: 8,
+                    image: 'https://assets.runiverse.wiki/images/items/634f579fbbce1b02b687d699.webp'
+                },
+                PulsingShard: {
+                    quantity: 12,
+                    image: 'https://assets.runiverse.wiki/images/items/65d75e4b0da2729615db078f.webp'
+                },
+                PulsingEmber: {
+                    quantity: 12,
+                    image: 'https://assets.runiverse.wiki/images/items/65d75e970da2729615db07a1.webp'
+                },
+                PulsingSoul: {
+                    quantity: 2,
+                    image: 'https://assets.runiverse.wiki/images/items/65d75ee60da2729615db07cd.webp'
+                }
             };
 
             // Calculate total materials needed
             const totalMaterials = {};
-            for (const material in materialsPerItem) {
-                totalMaterials[material] = materialsPerItem[material] * numItems;
+            for (const material in materials) {
+                totalMaterials[material] = {
+                    quantity: materials[material].quantity * numItems,
+                    image: materials[material].image
+                };
             }
 
             // Calculate total mana
@@ -103,11 +150,11 @@
             const totalMana = Math.floor(numItems / 9) * manaPer9Crafts;
 
             // Prepare result string
-            let resultHtml = '<h2>Materials Needed:</h2><ul>';
+            let resultHtml = '<h2>Materials Needed:</h2><div class="material-images">';
             for (const material in totalMaterials) {
-                resultHtml += `<li>${material}: ${totalMaterials[material]}</li>`;
+                resultHtml += `<div><img src="${totalMaterials[material].image}" alt="${material}"><p>${material}: ${totalMaterials[material].quantity}</p></div>`;
             }
-            resultHtml += `</ul><h2>Total Mana:</h2><p>${totalMana}</p>`;
+            resultHtml += '</div><h2>Total Mana:</h2><p>${totalMana}</p>';
 
             // Display results
             document.getElementById('results').innerHTML = resultHtml;
