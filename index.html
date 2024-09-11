@@ -33,9 +33,10 @@
             padding: 20px;
             background-color: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
-            width: 500px;
+            width: 600px;
             text-align: center;
             font-family: 'Raleway', sans-serif;
+            position: relative;
         }
 
         h1 {
@@ -72,18 +73,20 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            text-align: center;
         }
 
         .material-images div {
             display: flex;
             align-items: center;
             margin: 10px 0;
+            justify-content: center;
         }
 
         .material-images img {
-            width: 18px;
-            height: 18px;
-            margin-right: 10px;
+            width: 90px;
+            height: 90px;
+            margin-right: 15px;
         }
 
         .material-images a {
@@ -93,6 +96,15 @@
 
         .material-images a:hover {
             text-decoration: underline;
+        }
+
+        .bottom-image {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px; /* Adjust as needed */
+            height: auto;
         }
     </style>
 </head>
@@ -112,6 +124,9 @@
             <input type="submit" value="Calculate">
         </form>
         <div class="results" id="results"></div>
+
+        <!-- Bottom Center Image -->
+        <img src="https://assets.runiverse.wiki/images/items/65d8d8870da2729615db3b35.webp" class="bottom-image" alt="Crafting Image">
     </div>
 
     <script>
