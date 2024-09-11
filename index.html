@@ -86,6 +86,15 @@
             height: 40px;
             margin-right: 10px;
         }
+
+        .material-images a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .material-images a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -117,35 +126,43 @@
             const materials = {
                 Titanium: {
                     quantity: 18,
-                    image: 'https://assets.runiverse.wiki/images/items/634f06eb808f6bf4626a3518.webp'
+                    image: 'https://assets.runiverse.wiki/images/items/634f06eb808f6bf4626a3518.webp',
+                    link: 'https://runiverse.wiki/materials/titanium'
                 },
                 Cotton: {
                     quantity: 16,
-                    image: 'https://assets.runiverse.wiki/images/items/634f3562808f6bf4626a3738.webp'
+                    image: 'https://assets.runiverse.wiki/images/items/634f3562808f6bf4626a3738.webp',
+                    link: 'https://runiverse.wiki/materials/cotton'
                 },
                 Hemp: {
                     quantity: 16,
-                    image: 'https://assets.runiverse.wiki/images/items/634f2a9e808f6bf4626a3653.web'
+                    image: 'https://assets.runiverse.wiki/images/items/634f2a9e808f6bf4626a3653.webp',
+                    link: 'https://runiverse.wiki/materials/hemp'
                 },
                 Silk: {
                     quantity: 24,
-                    image: 'https://assets.runiverse.wiki/images/items/634f3597808f6bf4626a374a.webp'
+                    image: 'https://assets.runiverse.wiki/images/items/634f3597808f6bf4626a374a.webp',
+                    link: 'https://runiverse.wiki/materials/silk'
                 },
                 Carbon: {
                     quantity: 8,
-                    image: 'https://assets.runiverse.wiki/images/items/634f579fbbce1b02b687d699.webp'
+                    image: 'https://assets.runiverse.wiki/images/items/634f579fbbce1b02b687d699.webp',
+                    link: 'https://runiverse.wiki/materials/carbon'
                 },
                 PulsingShard: {
                     quantity: 12,
-                    image: 'https://assets.runiverse.wiki/images/items/65d75e4b0da2729615db078f.webp'
+                    image: 'https://assets.runiverse.wiki/images/items/65d75e4b0da2729615db078f.webp',
+                    link: 'https://runiverse.wiki/materials/pulsing-shard'
                 },
                 PulsingEmber: {
                     quantity: 12,
-                    image: 'https://assets.runiverse.wiki/images/items/65d75e970da2729615db07a1.webp'
+                    image: 'https://assets.runiverse.wiki/images/items/65d75e970da2729615db07a1.webp',
+                    link: 'https://runiverse.wiki/materials/pulsing-ember'
                 },
                 PulsingSoul: {
                     quantity: 2,
-                    image: 'https://assets.runiverse.wiki/images/items/65d75ee60da2729615db07cd.webp'
+                    image: 'https://assets.runiverse.wiki/images/items/65d75ee60da2729615db07cd.webp',
+                    link: 'https://runiverse.wiki/materials/pulsing-soul'
                 }
             };
 
@@ -154,7 +171,8 @@
             for (const material in materials) {
                 totalMaterials[material] = {
                     quantity: materials[material].quantity * numItems,
-                    image: materials[material].image
+                    image: materials[material].image,
+                    link: materials[material].link
                 };
             }
 
@@ -165,7 +183,13 @@
             // Prepare result string
             let resultHtml = '<h2>Materials Needed:</h2><div class="material-images">';
             for (const material in totalMaterials) {
-                resultHtml += `<div><img src="${totalMaterials[material].image}" alt="${material}"><p>${material}: ${totalMaterials[material].quantity}</p></div>`;
+                resultHtml += `
+                    <div>
+                        <a href="${totalMaterials[material].link}" target="_blank">
+                            <img src="${totalMaterials[material].image}" alt="${material}">
+                            <p>${material}: ${totalMaterials[material].quantity}</p>
+                        </a>
+                    </div>`;
             }
             resultHtml += '</div><h2>Total Mana:</h2><p>${totalMana}</p>';
 
