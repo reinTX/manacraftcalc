@@ -71,16 +71,17 @@
 
         .material-images {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .material-images div {
             display: flex;
             align-items: center;
-            margin: 10px 0;
+            margin: 10px;
             justify-content: center;
+            width: 45%; /* Adjust width to fit two items per row */
+            box-sizing: border-box;
         }
 
         .material-images img {
@@ -205,7 +206,15 @@
                         </a>
                     </div>`;
             }
-            resultHtml += '</div><h2>Total Mana:</h2><p>' + totalMana + '</p>';
+            // Ensure the last image is displayed only twice
+            resultHtml += `
+                <div>
+                    <img src="https://assets.runiverse.wiki/images/items/65d8d8870da2729615db3b35.webp" alt="Crafting Image">
+                </div>
+                <div>
+                    <img src="https://assets.runiverse.wiki/images/items/65d8d8870da2729615db3b35.webp" alt="Crafting Image">
+                </div>`;
+            resultHtml += '<h2>Total Mana:</h2><p>' + totalMana + '</p>';
 
             // Display results
             document.getElementById('results').innerHTML = resultHtml;
