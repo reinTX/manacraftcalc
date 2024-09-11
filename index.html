@@ -45,30 +45,6 @@
             margin-bottom: 20px;
         }
 
-        input[type="number"] {
-            width: 80%;
-            padding: 10px;
-            margin: 10px 0;
-        }
-
-        input[type="submit"] {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #45a049;
-        }
-
-        .results {
-            margin-top: 20px;
-            text-align: left;
-            font-size: 1.2em;
-        }
-
         .material-images {
             display: flex;
             flex-wrap: wrap;
@@ -99,16 +75,14 @@
             text-decoration: underline;
         }
 
-        .pulsing-images {
-            display: flex;
-            justify-content: center;
+        .results {
             margin-top: 20px;
+            text-align: left;
+            font-size: 1.2em;
         }
 
-        .pulsing-images img {
-            width: 90px;
-            height: 90px;
-            margin-left: 20px;
+        .pulsing-images {
+            display: none; /* Hide Pulsing images */
         }
     </style>
 </head>
@@ -119,107 +93,63 @@
         <img src="https://assets.runiverse.wiki/images/runiverse-wiki-logo.webp" class="top-left" alt="Wiki GIF">
     </a>
 
-    <!-- Calculator Form -->
+    <!-- Materials Display -->
     <div class="calculator">
-        <h1>Crafting Calculator</h1>
-        <form id="calculator-form">
-            <label for="num_items">Enter number of items to craft:</label><br>
-            <input type="number" id="num_items" name="num_items" required><br>
-            <input type="submit" value="Calculate">
-        </form>
+        <h1>Crafting Materials Calculator</h1>
         <div class="results" id="results"></div>
 
-        <!-- Centered Pulsing Images -->
-        <div class="pulsing-images">
-            <img src="https://assets.runiverse.wiki/images/items/65d75e4b0da2729615db078f.webp" alt="Pulsing Shard">
-            <img src="https://assets.runiverse.wiki/images/items/65d75e970da2729615db07a1.webp" alt="Pulsing Ember">
-            <img src="https://assets.runiverse.wiki/images/items/65d75ee60da2729615db07cd.webp" alt="Pulsing Soul">
+        <!-- Materials Images -->
+        <div class="material-images">
+            <div>
+                <a href="https://runiverse.wiki/materials/titanium" target="_blank">
+                    <img src="https://assets.runiverse.wiki/images/items/634f06eb808f6bf4626a3518.webp" alt="Titanium">
+                    <p>Titanium: 18</p>
+                </a>
+            </div>
+            <div>
+                <a href="https://runiverse.wiki/materials/cotton" target="_blank">
+                    <img src="https://assets.runiverse.wiki/images/items/634f3562808f6bf4626a3738.webp" alt="Cotton">
+                    <p>Cotton: 16</p>
+                </a>
+            </div>
+            <div>
+                <a href="https://runiverse.wiki/materials/hemp" target="_blank">
+                    <img src="https://assets.runiverse.wiki/images/items/634f2a9e808f6bf4626a3653.webp" alt="Hemp">
+                    <p>Hemp: 16</p>
+                </a>
+            </div>
+            <div>
+                <a href="https://runiverse.wiki/materials/silk" target="_blank">
+                    <img src="https://assets.runiverse.wiki/images/items/634f3597808f6bf4626a374a.webp" alt="Silk">
+                    <p>Silk: 24</p>
+                </a>
+            </div>
+            <div>
+                <a href="https://runiverse.wiki/materials/carbon" target="_blank">
+                    <img src="https://assets.runiverse.wiki/images/items/634f579fbbce1b02b687d699.webp" alt="Carbon">
+                    <p>Carbon: 8</p>
+                </a>
+            </div>
+            <div>
+                <a href="https://runiverse.wiki/materials/pulsing-shard" target="_blank">
+                    <img src="https://assets.runiverse.wiki/images/items/65d75e4b0da2729615db078f.webp" alt="Pulsing Shard">
+                    <p>Pulsing Shard: 12</p>
+                </a>
+            </div>
+            <div>
+                <a href="https://runiverse.wiki/materials/pulsing-ember" target="_blank">
+                    <img src="https://assets.runiverse.wiki/images/items/65d75e970da2729615db07a1.webp" alt="Pulsing Ember">
+                    <p>Pulsing Ember: 12</p>
+                </a>
+            </div>
+            <div>
+                <a href="https://runiverse.wiki/materials/pulsing-soul" target="_blank">
+                    <img src="https://assets.runiverse.wiki/images/items/65d75ee60da2729615db07cd.webp" alt="Pulsing Soul">
+                    <p>Pulsing Soul: 2</p>
+                </a>
+            </div>
         </div>
     </div>
-
-    <script>
-        document.getElementById('calculator-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            // Get the number of items from the input
-            const numItems = parseInt(document.getElementById('num_items').value);
-            
-            // Define materials per item and images
-            const materials = {
-                Titanium: {
-                    quantity: 18,
-                    image: 'https://assets.runiverse.wiki/images/items/634f06eb808f6bf4626a3518.webp',
-                    link: 'https://runiverse.wiki/materials/titanium'
-                },
-                Cotton: {
-                    quantity: 16,
-                    image: 'https://assets.runiverse.wiki/images/items/634f3562808f6bf4626a3738.webp',
-                    link: 'https://runiverse.wiki/materials/cotton'
-                },
-                Hemp: {
-                    quantity: 16,
-                    image: 'https://assets.runiverse.wiki/images/items/634f2a9e808f6bf4626a3653.webp',
-                    link: 'https://runiverse.wiki/materials/hemp'
-                },
-                Silk: {
-                    quantity: 24,
-                    image: 'https://assets.runiverse.wiki/images/items/634f3597808f6bf4626a374a.webp',
-                    link: 'https://runiverse.wiki/materials/silk'
-                },
-                Carbon: {
-                    quantity: 8,
-                    image: 'https://assets.runiverse.wiki/images/items/634f579fbbce1b02b687d699.webp',
-                    link: 'https://runiverse.wiki/materials/carbon'
-                },
-                PulsingShard: {
-                    quantity: 12,
-                    image: 'https://assets.runiverse.wiki/images/items/65d75e4b0da2729615db078f.webp',
-                    link: 'https://runiverse.wiki/materials/pulsing-shard'
-                },
-                PulsingEmber: {
-                    quantity: 12,
-                    image: 'https://assets.runiverse.wiki/images/items/65d75e970da2729615db07a1.webp',
-                    link: 'https://runiverse.wiki/materials/pulsing-ember'
-                },
-                PulsingSoul: {
-                    quantity: 2,
-                    image: 'https://assets.runiverse.wiki/images/items/65d75ee60da2729615db07cd.webp',
-                    link: 'https://runiverse.wiki/materials/pulsing-soul'
-                }
-            };
-
-            // Calculate total materials needed
-            const totalMaterials = {};
-            for (const material in materials) {
-                totalMaterials[material] = {
-                    quantity: materials[material].quantity * numItems,
-                    image: materials[material].image,
-                    link: materials[material].link
-                };
-            }
-
-            // Calculate total mana
-            const manaPer9Crafts = 200;
-            const totalMana = Math.floor(numItems / 9) * manaPer9Crafts;
-
-            // Prepare result string
-            let resultHtml = '<h2>Materials Needed:</h2><div class="material-images">';
-            for (const material in totalMaterials) {
-                resultHtml += `
-                    <div>
-                        <a href="${totalMaterials[material].link}" target="_blank">
-                            <img src="${totalMaterials[material].image}" alt="${material}">
-                            <p>${material}: ${totalMaterials[material].quantity}</p>
-                        </a>
-                    </div>`;
-            }
-            resultHtml += '</div>';
-            resultHtml += '<h2>Total Mana:</h2><p>' + totalMana + '</p>';
-
-            // Display results
-            document.getElementById('results').innerHTML = resultHtml;
-        });
-    </script>
 
 </body>
 </html>
